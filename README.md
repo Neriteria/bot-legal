@@ -8,9 +8,10 @@ registered in the Discord Developer Portal for that application.
 | Bot | Status | Privacy Policy | Terms of Service |
 |---|---|---|---|
 | Poludnitsa | In development | [Privacy Policy](./poludnitsa/PRIVACY_POLICY.md) | [Terms of Service](./poludnitsa/TERMS_OF_SERVICE.md) |
+| WoWS Utility App | Public | [Privacy Policy](./wows-utility-app/PRIVACY_POLICY.md) | [Terms of Service](./wows-utility-app/TERMS_OF_SERVICE.md) |
 
-Enquiries about a bot are handled in the community server where that bot operates; the
-invite link is given in the contact section of each document.
+Enquiries about a bot are handled in a Discord server (the community or support server for
+that bot); the invite link is given in the contact section of each document.
 
 ---
 
@@ -22,6 +23,8 @@ invite link is given in the contact section of each document.
   正確でなければならないのは、実際に読む人が読める側の言語。
   - Poludnitsa: 利用者はグローバルサーバーの英語話者が中心 → **英語が正文**、日本語は参考訳。
   - 私的に提供している他の bot: 利用者は日本語話者 → **日本語が正文**、英語は要約のみで足りる。
+  - WoWS Utility App: 利用者は海外にもいるが、運営者が問い合わせに日本語でしか対応できない
+    → **日本語が正文**、英語は全文の参考訳を付ける。
   - どちらの場合も、文書の冒頭に「どちらが正文か」「相違時はどちらが優先するか」を明記する。
     これを書いておけば、訳のズレが法的な争点にならない。
 - **1 ディレクトリ = 1 Discord アプリケーション。** リポジトリ単位でも bot の表示名単位でも
