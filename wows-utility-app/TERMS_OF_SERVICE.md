@@ -30,7 +30,8 @@ only; in case of any discrepancy, the Japanese version prevails.)*
 
 ## 2. 本サービスの内容
 
-本 bot は、World of Warships のプレイヤー向けに以下の機能を提供します。
+本 bot は、World of Warships のプレイヤー向けにユーティリティ機能を提供します。主な機能は
+以下のとおりです。
 
 - リプレイファイルからのタイムラプス動画の生成
 - 試合に参加したプレイヤーの装備構成を示すビルドカード画像の表示
@@ -198,7 +199,7 @@ forms part of these Terms.
 
 ## 2. The service
 
-The Bot provides the following features for World of Warships players:
+The Bot provides utility features for World of Warships players. Its main features are:
 
 - generating time-lapse videos from replay files;
 - showing build card images of the loadouts of players in a match;
