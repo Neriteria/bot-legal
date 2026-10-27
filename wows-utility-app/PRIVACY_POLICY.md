@@ -36,7 +36,7 @@ only; in case of any discrepancy, the Japanese version prevails.)*
 
 | データ | 目的 | 保存期間 |
 |---|---|---|
-| 利用者がコマンドに添付したリプレイファイル（`.wowsreplay`） | タイムラプス動画およびビルドカード画像の生成 | 30 日後に自動削除 |
+| 利用者がコマンドに添付したリプレイファイル（`.wowsreplay`） | タイムラプス動画およびビルドカード画像の生成、本 bot の機能改善および不具合の調査・修正（下記参照） | 30 日後に自動削除 |
 | 生成したタイムラプス動画およびビルドカード画像 | 生成結果の送信、および生成後にビルドカードを表示するため | 30 日後に自動削除 |
 | プリセット（Discord ユーザー ID、プリセット名、描画オプションの設定値、更新日時、既定プリセットの設定） | 利用者が保存した描画設定の再利用 | 利用者が削除するまで |
 | 運用ログ（下記参照） | 障害の調査、不正利用への対処、問い合わせへの対応 | 30 日後に自動削除 |
@@ -50,12 +50,22 @@ only; in case of any discrepancy, the Japanese version prevails.)*
 
 プリセットは、利用者が自らプリセットを保存した場合にのみ作成されます。
 
+### リプレイファイルの機能改善・不具合修正への利用
+
+送信されたリプレイファイルは、動画の生成に加えて、本 bot の機能改善および不具合の
+調査・修正に利用することがあります。たとえば、描画に失敗したリプレイの原因調査や、
+修正後の動作確認に使用します。
+
+この目的のために、運営者が保存期間内のリプレイファイルを複製することがあります。
+複製は運営者が管理する環境でのみ保管し、目的を達成した時点で削除します。複製した
+リプレイファイルを公開したり、第三者へ提供したりすることはありません。
+
 ## 3. リプレイファイルに含まれる他のプレイヤーの情報
 
 World of Warships のリプレイファイルには、録画した本人だけでなく、同じ試合に参加した
 すべてのプレイヤーのゲーム内の名前、艦艇、装備構成、ゲーム内チャットが記録されています。
-本 bot はこれらを動画とビルドカード画像の生成にのみ使用し、それ以外の目的では利用・集計
-しません。
+これらの情報は、第 2 項に記載した目的（動画とビルドカード画像の生成、機能改善および不具合の
+調査・修正）にのみ使用し、それ以外の目的では利用・集計しません。
 
 生成されるものには、以下のとおり他のプレイヤーの情報が含まれることがあります。
 
@@ -105,6 +115,8 @@ World of Warships のリプレイファイルには、録画した本人だけ�
 
 - **リプレイファイルと生成物**は、保存から 30 日後に自動的に削除されます。削除後は、
   過去の動画に付いているビルドカードの選択メニューも利用できなくなります。
+- 機能改善・不具合修正のために運営者が**複製したリプレイファイル**は、目的を達成した時点で
+  削除します（第 2 項参照）。
 - **プリセット**は、利用者が `/timelapse preset delete` コマンドでいつでも削除できます。
   プリセットはサーバーではなく利用者に紐づくため、本 bot がサーバーから退出しても
   削除されません。
@@ -200,7 +212,7 @@ The Bot collects data only when a user runs one of its commands. The data it col
 
 | Data | Purpose | Retention |
 |---|---|---|
-| Replay files (`.wowsreplay`) attached to a command by the user | Generating time-lapse videos and build card images | Deleted automatically after 30 days |
+| Replay files (`.wowsreplay`) attached to a command by the user | Generating time-lapse videos and build card images; improving the Bot and investigating and fixing defects (see below) | Deleted automatically after 30 days |
 | Generated time-lapse videos and build card images | Delivering the result, and showing build cards after generation | Deleted automatically after 30 days |
 | Presets (Discord user ID, preset name, rendering option values, last-updated time, default-preset setting) | Letting users reuse rendering settings they saved | Until the user deletes them |
 | Operational logs (see below) | Investigating failures, dealing with abuse, and answering enquiries | Deleted automatically after 30 days |
@@ -214,12 +226,24 @@ Each time a command is run, the operational logs record:
 
 Presets are created only when a user chooses to save one.
 
+### Use of replay files to improve the Bot and fix defects
+
+In addition to generating videos, submitted replay files may be used to improve the Bot and
+to investigate and fix defects — for example, to find out why a replay failed to render, or
+to confirm that a fix works.
+
+For this purpose, the Operator may make a copy of a replay file while it is within its
+retention period. Such copies are kept only in an environment controlled by the Operator and
+are deleted once the purpose has been achieved. Copied replay files are never published or
+shared with third parties.
+
 ## 3. Information about other players contained in replay files
 
 A World of Warships replay file records not only the player who recorded it, but also the
-in-game names, ships, loadouts and in-game chat of every player in that match. The Bot uses
-this information only to generate videos and build card images, and does not use or
-aggregate it for any other purpose.
+in-game names, ships, loadouts and in-game chat of every player in that match. This
+information is used only for the purposes described in section 2 (generating videos and
+build card images, and improving the Bot and investigating and fixing defects), and is not
+used or aggregated for any other purpose.
 
 The generated output may contain information about other players, as follows:
 
@@ -271,6 +295,8 @@ investigate abuse of the Bot itself.
 
 - **Replay files and generated output** are deleted automatically 30 days after they are
   stored. After that, the build card menu attached to an older video stops working.
+- **Copies of replay files** made by the Operator to improve the Bot or fix defects are
+  deleted once the purpose has been achieved (see section 2).
 - **Presets** can be deleted by the user at any time with the `/timelapse preset delete`
   command. Presets belong to the user rather than to a server, so they are not deleted when
   the Bot leaves a server.

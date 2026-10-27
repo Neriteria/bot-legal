@@ -65,8 +65,9 @@ only; in case of any discrepancy, the Japanese version prevails.)*
 - リプレイファイルには、同じ試合に参加した他のプレイヤーの名前やゲーム内チャットが含まれ、
   生成した動画にもそれらが映ることがあります。動画はコマンドを実行したチャンネルに投稿
   されるため、利用者は投稿先のチャンネルと描画オプションを適切に選択してください。
-- 運営者は、利用者が送信したリプレイファイルおよび生成物について、本 bot の提供に必要な
-  範囲でのみ保存・処理します。それ以外の目的で利用したり、権利を主張したりすることは
+- 運営者は、利用者が送信したリプレイファイルおよび生成物について、本 bot の提供、ならびに
+  本 bot の機能改善および不具合の調査・修正に必要な範囲でのみ保存・処理します（詳細は
+  プライバシーポリシーに定めます）。それ以外の目的で利用したり、権利を主張したりすることは
   ありません。
 - 生成した動画やビルドカード画像の描画内容が、実際の試合を正確に再現していることは
   保証しません。
@@ -232,8 +233,9 @@ You must not:
   these may appear in the generated video. Because the video is posted to the channel where
   the command was run, choose the channel and the rendering options appropriately.
 - The Operator stores and processes the replay files you submit, and the output generated
-  from them, only to the extent necessary to provide the Bot. The Operator does not use them
-  for any other purpose and claims no rights in them.
+  from them, only to the extent necessary to provide the Bot and to improve it and
+  investigate and fix defects (as detailed in the Privacy Policy). The Operator does not use
+  them for any other purpose and claims no rights in them.
 - The Operator does not guarantee that a generated video or build card image accurately
   reproduces the actual match.
 
