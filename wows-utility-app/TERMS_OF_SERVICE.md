@@ -69,6 +69,8 @@ only; in case of any discrepancy, the Japanese version prevails.)*
   本 bot の機能改善および不具合の調査・修正に必要な範囲でのみ保存・処理します（詳細は
   プライバシーポリシーに定めます）。それ以外の目的で利用したり、権利を主張したりすることは
   ありません。
+- 生成した動画およびビルドカード画像は、本規約、ならびに Wargaming（第 7 項参照）その他の
+  権利者の権利の範囲内で、利用者が自由に利用できます。
 - 生成した動画やビルドカード画像の描画内容が、実際の試合を正確に再現していることは
   保証しません。
 
@@ -236,6 +238,8 @@ You must not:
   from them, only to the extent necessary to provide the Bot and to improve it and
   investigate and fix defects (as detailed in the Privacy Policy). The Operator does not use
   them for any other purpose and claims no rights in them.
+- You may use generated videos and build card images freely, within these Terms and the
+  rights of Wargaming (see section 7) and other rights holders.
 - The Operator does not guarantee that a generated video or build card image accurately
   reproduces the actual match.
 
