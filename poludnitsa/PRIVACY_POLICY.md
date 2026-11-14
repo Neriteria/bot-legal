@@ -3,7 +3,7 @@
 **Application:** `Poludnitsa` (Discord bot)
 **Operator:** `Neriteria`
 **Effective date:** 2026-08-18
-**Last updated:** 2026-08-18
+**Last updated:** 2026-11-15
 
 *This English text is the authoritative version of this policy. A Japanese translation
 follows below for reference only; in case of any discrepancy between the two, the English
@@ -11,174 +11,113 @@ version prevails.*
 
 ---
 
-## 1. Overview
+## 1. Scope
 
-`Poludnitsa` ("the Bot") is a Discord bot operated by `Neriteria` ("the Operator") to
-support the operation of the community server for which it was commissioned.
-
-This policy explains what data the Bot collects, why it collects it, where it is stored,
-and how you can have it removed.
-
-By adding the Bot to a Discord server, the server's administrators agree to this policy on
-behalf of that server. Members of a server where the Bot is present are subject to this
-policy for the data described below.
-
-The Bot uses no artificial intelligence or machine learning. It does not sell, rent, or
-share data with third parties. It does not display advertising, build user profiles, or
-analyse data across servers.
+This policy explains how `Poludnitsa` ("the Bot"), operated by `Neriteria` ("the
+Operator"), uses the data of Discord users in servers where the Bot is present. It applies
+to every member of such a server.
 
 ## 2. Data the Bot stores
 
-The Bot stores the following data. All of it is partitioned by Discord server (guild) ID
-and is never read or combined across servers.
-
 | Data | Purpose |
 |---|---|
-| Discord server IDs, user IDs, role IDs, channel IDs (numeric IDs only) | Identifying which server a setting belongs to, which member owns a point balance, and which roles/channels a rule applies to |
-| Point balances (integer) | Providing the points and shop feature |
-| Moderation rule definitions: trigger words, watched channel/category IDs, exempt user/role IDs, action type | Providing the moderation feature configured by server administrators |
-| Custom command definitions and their attached files | Providing the custom command feature configured by server administrators |
-| Custom emoji usage counts, per day (emoji ID and a count only) | Providing custom emoji usage statistics |
-| Per-server runtime settings, such as the designated log channel ID | Providing configurable behaviour per server |
+| Your Discord user ID | Associating points with you |
+| Your points: balance, points earned per day, and number of shop purchases | Points, rankings and the shop |
+| Configuration created by server administrators: custom commands and their attached files, and server settings | Providing the features the administrators configured |
 
-Point balances are created automatically when a member posts a message in a server where
-the points feature is enabled. All other data listed above is created only when a server
-administrator explicitly configures it.
+Your user ID and points are recorded automatically when you post a message in a server
+where the points feature is enabled. All stored data is kept separately for each server and
+is never combined across servers.
 
 ## 3. Message content
 
 The Bot receives the content of messages sent in servers where it is present, and uses it
-to:
+only to:
 
-- compare messages against trigger words configured by server administrators (moderation);
 - detect custom command invocations, i.e. a message beginning with the server's configured
   prefix;
-- count occurrences of the server's custom emoji.
+- count how often the server's own custom emoji are used. Only the emoji ID and a daily
+  count are kept; who used an emoji is not recorded.
 
-**Message content is not stored outside Discord.** Each message is evaluated in memory as
-it arrives and is discarded immediately afterwards. Message content is never written to the
-Bot's database, never included in operational logs, and never sent to any third party or
-external service.
+Message content is processed in memory as each message arrives and is discarded
+immediately. It is never stored, never included in logs, and never sent outside Discord.
 
-There is one exception, and it stays within Discord: when a moderation rule takes an action
-on a message, the Bot posts an audit record to a log channel **inside the same Discord
-server**, and that record includes the content of the message that matched. This record is
-visible only to whoever can view that channel, is controlled by the server's
-administrators, and is subject to Discord's own data handling rather than the Bot
-operator's.
+## 4. Member information
 
-Operational logs kept by the operator deliberately exclude message content. A moderation
-log entry records only the action type, the rule name, and the server, user, channel and
-message IDs involved.
+The Bot receives member information, such as display names, from Discord. It is used only
+to show members' names on the points leaderboard, is held only in memory, and is never
+stored.
 
-## 4. Data the Bot does not collect
+## 5. Data the Bot does not store
 
-The Bot does not collect or store:
-
-- message content (outside the transient processing described in section 3);
-- usernames, display names, avatars, or profile information;
+- message content;
+- usernames, display names, avatars, or other profile information;
 - email addresses, real names, phone numbers, or postal addresses;
 - IP addresses or device information;
-- payment information (the Bot has no paid features; "points" are an in-server value with
-  no monetary worth and cannot be purchased or exchanged for money);
-- voice data, direct messages sent to other users, or presence/activity status.
+- payment information (points have no monetary value and cannot be bought or exchanged for
+  money);
+- voice data, direct messages, or presence/activity status.
 
-## 5. Where data is stored
+## 6. Where data is stored
 
 Stored data is held in Amazon Web Services (Amazon DynamoDB and Amazon S3) in the
-`ap-northeast-1` (Tokyo, Japan) region, in an account controlled by the Operator. Access is
-restricted to the Operator.
+`ap-northeast-1` (Tokyo, Japan) region. Only the Operator can access it.
 
-The account holding this infrastructure may be migrated to another account operated for the
-same community server. Such a migration does not change what data is collected, why it is
-collected, or who may access it.
+If you are in the European Economic Area or the United Kingdom: Japan has been recognised
+by the European Commission as providing an adequate level of data protection.
 
-The Bot is operated from Japan, and its users are located worldwide. If you are in the
-European Economic Area or the United Kingdom, note that Japan has been recognised by the
-European Commission as providing an adequate level of data protection, so the storage of
-your data in Japan does not require additional safeguards.
+## 7. Data sharing
 
-## 6. Data sharing
+Data is never sold, rented, or shared with third parties, and is not used for advertising,
+profiling, or training artificial intelligence or machine learning models. It may be
+disclosed only where required by law.
 
-Data is never sold, rented, or shared with third parties. It is not used to train
-artificial intelligence or machine learning models. It is not used for advertising or
-profiling.
+## 8. Retention, deletion and your rights
 
-Data may be disclosed only where required by applicable law, or where necessary to
-investigate abuse of the Bot itself.
-
-## 7. Retention, deletion and your rights
-
-- Data is retained for as long as the Bot remains in the relevant server and the data
-  remains in use.
+- Data is kept while the Bot remains in the server and the data is in use.
 - When the Bot is removed from a server, that server's data is deleted.
-- Any user may request deletion of their own data (for example, their point balance) by
-  contacting the operator using the details in section 10. Requests are handled within a
-  reasonable period.
-- Server administrators may delete configuration data they created (rules, custom commands
-  and their attachments) at any time using the Bot's own commands.
-
-Note that the audit records described in section 3 live in a Discord channel, not in the
-Bot's storage. Deleting them is done through Discord by the server's administrators.
-
-Wherever you are located, you may ask the operator to tell you what data is held about
-you, to correct it if it is wrong, to delete it, or to stop processing it. Requests are
-free of charge and can be made using the contact details in section 10. Because the Bot
-identifies you only by your Discord user ID, a request must be made from the Discord
-account concerned so that it can be matched to the right data.
+- You may ask the Operator to tell you what data is held about you, to correct it, to
+  delete it, or to stop processing it, using the contact in section 11. Requests are free
+  and are handled within a reasonable period.
+- Because the Bot identifies you only by your Discord user ID, a request must be made from
+  the Discord account concerned.
 
 If you are in the European Economic Area or the United Kingdom, these correspond to your
-rights of access, rectification, erasure, restriction and objection, and you also have the
-right to lodge a complaint with your local data protection authority.
+rights of access, rectification, erasure, restriction and objection, and you may also lodge
+a complaint with your local data protection authority.
 
-## 8. Your choices
+## 9. Your choices
 
-**Moderation.** There is no per-member opt-out from moderation, by design: a moderation
-feature that the targeted member could switch off for themselves would not work. Whether a
-rule applies is decided by the server's administrators, who can exempt specific users or
-roles and can limit a rule to specific channels or categories. No moderation data about a
-message is retained unless the message matches a rule (see section 3).
+**Points.** You can opt out of points by contacting the Operator. Your points are deleted
+and no further points are recorded for you.
 
-**Points.** A member who does not want a point balance to be kept for them may opt out by
-contacting the operator; their balance will be deleted and no further points recorded.
+**Whole server.** A server administrator can stop all data processing for the server at any
+time by removing the Bot.
 
-**Custom commands.** These run only when a member deliberately posts a prefixed command
-name.
+## 10. Children
 
-**Emoji statistics.** These aggregate only an emoji ID and a count. Who used an emoji is
-never recorded, so no user-linked data exists.
+The Bot is not directed at children. Use of Discord requires meeting the minimum age set
+out in the Discord Terms of Service for your country. If data belonging to anyone below that
+age is identified, it will be deleted.
 
-**Whole server.** A server administrator can end all data collection for their server
-immediately by removing the Bot from it.
+## 11. Contact
 
-## 9. Children
-
-The Bot is not directed at children. Use of Discord requires users to meet the minimum age
-set out in the Discord Terms of Service for their country. The Bot does not knowingly
-retain data belonging to anyone below that age; if such data is identified, it will be
-deleted.
-
-## 10. Contact
-
-Questions about this policy, and requests for access to or deletion of your data, can be
-raised in the community server where the Bot operates:
+Questions about this policy and data requests can be raised with the moderators of the
+community server where the Bot operates, in English or Japanese:
 
 https://discord.gg/gfl2-exilium
 
-Contact the server's moderators there. Enquiries are welcome in English or Japanese.
+## 12. Changes to this policy
 
-## 11. Changes to this policy
-
-This policy may be updated. When it is, the "Last updated" date at the top of this document
-is changed. Material changes will be announced in the community server where the Bot
-operates. Continued use of the Bot after a change constitutes acceptance of the updated
-policy.
+When this policy is updated, the "Last updated" date above is changed, and material changes
+are announced in the community server where the Bot operates.
 
 ## Revision history
 
 | Date | Change |
 |---|---|
 | 2026-08-18 | Initial version. |
+| 2026-11-15 | Rewritten to focus on how user data is used. Removed the moderation feature. Added member information (section 4). |
 
 ---
 ---
@@ -188,162 +127,110 @@ policy.
 **対象アプリケーション:** `Poludnitsa`（Discord bot）
 **運営者:** `Neriteria`
 **発効日:** 2026-08-18
-**最終更新日:** 2026-08-18
+**最終更新日:** 2026-11-15
 
 *本ポリシーの正文は上記の英語版です。以下の日本語訳は参考のために提供するものであり、
 両者に相違がある場合は英語版が優先します。*
 
-## 1. 概要
+## 1. 対象
 
-`Poludnitsa`（以下「本 bot」）は、開発を委託されたコミュニティサーバーの運営を支援する
-ために `Neriteria`（以下「運営者」）が運営する Discord bot です。
-
-本ポリシーは、本 bot が取得するデータ、その目的、保存場所、および削除方法について
-説明します。
-
-本 bot をサーバーに導入した時点で、当該サーバーの管理者はサーバーを代表して本ポリシーに
-同意したものとみなします。本 bot が導入されたサーバーのメンバーは、以下に記載する範囲で
-本ポリシーの対象となります。
-
-本 bot は AI・機械学習を一切使用しません。取得したデータを第三者へ販売・提供することは
-なく、広告表示・プロファイリング・サーバーをまたいだ分析も行いません。
+本ポリシーは、`Neriteria`（以下「運営者」）が運営する `Poludnitsa`（以下「本 bot」）が、
+本 bot の導入されたサーバーにおいて Discord ユーザーのデータをどのように利用するかを
+説明します。当該サーバーのすべてのメンバーが対象です。
 
 ## 2. 保存するデータ
 
-本 bot は以下のデータを保存します。すべて Discord サーバー（ギルド）ID で分離されており、
-サーバーをまたいで参照・結合することはありません。
-
 | データ | 目的 |
 |---|---|
-| Discord のサーバー ID・ユーザー ID・ロール ID・チャンネル ID（数値 ID のみ） | 設定がどのサーバーのものか、ポイント残高が誰のものか、ルールがどのロール／チャンネルに適用されるかの識別 |
-| ポイント残高（整数） | ポイント＆ショップ機能の提供 |
-| モデレーションルールの定義（トリガーワード、監視対象チャンネル／カテゴリ ID、除外ユーザー／ロール ID、動作種別） | 管理者が設定したモデレーション機能の提供 |
-| カスタムコマンドの定義と添付ファイル | 管理者が設定したカスタムコマンド機能の提供 |
-| カスタム絵文字の日次使用回数（絵文字 ID と回数のみ） | 絵文字使用統計の提供 |
-| サーバーごとのランタイム設定（ログチャンネル ID 等） | サーバーごとの動作設定の提供 |
+| あなたの Discord ユーザー ID | ポイントをあなたに紐づけるため |
+| あなたのポイント（残高、日ごとの獲得量、ショップでの購入回数） | ポイント、ランキング、ショップの提供 |
+| サーバー管理者が作成した設定（カスタムコマンドとその添付ファイル、サーバーの設定） | 管理者が設定した機能の提供 |
 
-ポイント残高は、ポイント機能が有効なサーバーでメンバーが発言した際に自動的に作成されます。
-それ以外のデータは、サーバー管理者が明示的に設定した場合にのみ作成されます。
+ユーザー ID とポイントは、ポイント機能が有効なサーバーであなたがメッセージを投稿したときに
+自動的に記録されます。保存するデータはすべてサーバーごとに分けて保持し、サーバーをまたいで
+結合することはありません。
 
-## 3. メッセージ本文の取り扱い
+## 3. メッセージ本文
 
-本 bot は、導入されたサーバー内で送信されたメッセージの本文を受信し、以下の目的で使用します。
+本 bot は、導入されたサーバーで送信されたメッセージの本文を受信し、次の目的にのみ使用します。
 
-- サーバー管理者が設定したトリガーワードとの照合（モデレーション）
-- カスタムコマンドの呼び出し判定（サーバーで設定されたプレフィックスで始まるメッセージの検出）
-- そのサーバーのカスタム絵文字の使用回数の集計
+- カスタムコマンドの呼び出しの検出（サーバーで設定されたプレフィックスで始まるメッセージ）
+- そのサーバー自身のカスタム絵文字の使用回数の集計。保持するのは絵文字 ID と日ごとの回数
+  だけで、誰が使ったかは記録しません。
 
-**メッセージ本文を Discord 外へ保存することはありません。** 受信したメッセージはメモリ上で
-評価されるのみで、評価後ただちに破棄されます。本文がデータベースへ書き込まれることはなく、
-運用ログに含まれることもなく、第三者や外部サービスへ送信されることもありません。
+メッセージ本文は、受信したときにメモリ上で処理され、ただちに破棄されます。保存することも、
+ログに含めることも、Discord の外へ送ることもありません。
 
-例外は 1 点のみで、それも Discord 内で完結します。モデレーションルールが動作した際、
-本 bot は**同じ Discord サーバー内**のログチャンネルへ監査記録を投稿し、その記録には
-一致したメッセージの内容が含まれます。この記録は当該チャンネルを閲覧できる者のみが
-参照でき、サーバー管理者の管理下にあり、運営者ではなく Discord のデータ取り扱いに従います。
+## 4. メンバー情報
 
-運営者が保持する運用ログには、意図的にメッセージ本文を含めていません。モデレーション動作の
-ログに記録されるのは、動作種別・ルール名・関係するサーバー ID・ユーザー ID・チャンネル ID・
-メッセージ ID のみです。
+本 bot は、表示名などのメンバー情報を Discord から受け取ります。これはポイントの
+リーダーボードにメンバーの名前を表示するためにのみ使用し、メモリ上にのみ保持し、
+保存することはありません。
 
-## 4. 取得しないデータ
+## 5. 保存しないデータ
 
-本 bot は以下を取得・保存しません。
-
-- メッセージ本文（第 3 項に記載した一時的な処理を除く）
-- ユーザー名、表示名、アバター、プロフィール情報
+- メッセージ本文
+- ユーザー名、表示名、アバター、その他のプロフィール情報
 - メールアドレス、氏名、電話番号、住所
 - IP アドレス、端末情報
-- 決済情報（本 bot に有料機能はありません。「ポイント」はサーバー内の値であり金銭的価値を
-  持たず、購入も換金もできません）
-- 音声データ、他ユーザー宛の DM、プレゼンス／アクティビティ状態
+- 決済情報（ポイントに金銭的価値はなく、購入も換金もできません）
+- 音声データ、ダイレクトメッセージ、プレゼンス／アクティビティ状態
 
-## 5. データの保存場所
+## 6. 保存場所
 
-保存されるデータは、Amazon Web Services（Amazon DynamoDB および Amazon S3）の
-`ap-northeast-1`（東京）リージョンの、運営者が管理するアカウントに保管されます。
-アクセスできるのは運営者のみです。
+保存するデータは、Amazon Web Services（Amazon DynamoDB および Amazon S3）の
+`ap-northeast-1`（東京）リージョンに保管します。アクセスできるのは運営者のみです。
 
-当該インフラを保持するアカウントは、同一のコミュニティサーバーのために運用される
-別のアカウントへ移管されることがあります。移管によって、取得するデータ、その目的、
-アクセスできる者が変わることはありません。
+欧州経済領域または英国に所在する方へ: 日本は、欧州委員会により十分な個人データ保護の
+水準を確保していると認定されています。
 
-本 bot は日本から運営され、利用者は世界各地に所在します。欧州経済領域または英国に
-所在する利用者について、日本は欧州委員会により十分な個人データ保護の水準を確保している
-と認定されているため、日本国内での保管に追加の保護措置は必要ありません。
+## 7. 第三者提供
 
-## 6. 第三者提供
+データを第三者へ販売・貸与・提供することはなく、広告、プロファイリング、AI・機械学習
+モデルの学習にも使用しません。法令により必要な場合に限り、開示することがあります。
 
-データを第三者へ販売・貸与・提供することはありません。AI・機械学習モデルの学習には
-一切使用しません。広告やプロファイリングにも使用しません。
+## 8. 保存期間・削除・利用者の権利
 
-法令に基づき開示が必要な場合、および本 bot 自体への不正利用を調査する必要がある場合に
-限り、開示することがあります。
+- データは、本 bot がサーバーに在籍し、そのデータが利用されている間保持します。
+- 本 bot がサーバーから退出した場合、そのサーバーのデータを削除します。
+- 第 11 項の連絡先から、運営者に対して、あなたに関して保持しているデータの開示、訂正、
+  削除、処理の停止を請求できます。請求は無償で、合理的な期間内に対応します。
+- 本 bot はあなたを Discord のユーザー ID でのみ識別するため、請求は本人の Discord
+  アカウントから行ってください。
 
-## 7. 保存期間・削除・利用者の権利
-
-- データは、本 bot が当該サーバーに在籍し、そのデータが利用されている間保持されます。
-- 本 bot がサーバーから退出した場合、当該サーバーのデータを削除します。
-- 利用者は、第 10 項の連絡先に連絡することで、自身のデータ（ポイント残高等）の削除を
-  請求できます。請求は合理的な期間内に対応します。
-- サーバー管理者は、自身が作成した設定データ（ルール、カスタムコマンドとその添付ファイル）を
-  本 bot のコマンドによりいつでも削除できます。
-
-第 3 項に記載した監査記録は本 bot のストレージではなく Discord のチャンネル上に存在します。
-その削除は、サーバー管理者が Discord 上で行ってください。
-
-所在地を問わず、利用者は運営者に対し、自身に関して保持されているデータの開示、
-誤りがある場合の訂正、削除、および処理の停止を請求できます。請求は無償で、第 10 項の
-連絡先から行えます。本 bot は Discord のユーザー ID のみで利用者を識別しているため、
-対象データを特定できるよう、該当する Discord アカウントから請求してください。
-
-欧州経済領域または英国に所在する利用者にとって、これらはアクセス権・訂正権・消去権・
+欧州経済領域または英国に所在する方にとって、これらはアクセス権・訂正権・消去権・
 処理制限権・異議申立権に相当します。また、所在国のデータ保護監督機関へ苦情を申し立てる
-権利も有します。
+こともできます。
 
-## 8. 利用者の選択肢
+## 9. 利用者の選択肢
 
-**モデレーション:** メンバー個人によるオプトアウトは提供していません。対象となる本人が
-自分だけ無効化できるモデレーション機能は機能しないためです。適用の可否を決めるのは
-サーバー管理者であり、管理者は特定のユーザー・ロールを除外設定でき、ルールの適用範囲を
-特定のチャンネル／カテゴリに限定できます。ルールに一致しないメッセージについては、
-モデレーションに関するデータは一切残りません（第 3 項参照）。
+**ポイント:** 運営者に連絡することで、ポイントからオプトアウトできます。あなたの
+ポイントは削除され、以後記録されません。
 
-**ポイント:** ポイント残高の保持を望まないメンバーは、運営者に連絡することでオプトアウト
-できます。残高は削除され、以後ポイントは記録されません。
+**サーバー全体:** サーバー管理者は、本 bot を退出させることで、いつでもそのサーバーに
+おけるすべてのデータ処理を止められます。
 
-**カスタムコマンド:** メンバーが自らプレフィックス付きのコマンド名を投稿した場合にのみ
-動作します。
-
-**絵文字統計:** 絵文字 ID と回数のみを集計します。誰が使用したかは記録しないため、
-個人に紐づくデータは存在しません。
-
-**サーバー全体:** サーバー管理者は、本 bot を退出させることで、当該サーバーにおける
-すべてのデータ取得を即座に終了できます。
-
-## 9. 未成年の利用について
+## 10. 未成年の利用について
 
 本 bot は子どもを対象としたものではありません。Discord の利用には、Discord 利用規約が
-国ごとに定める最低年齢を満たす必要があります。本 bot は当該年齢未満の利用者のデータを
-意図的に保持しません。該当が判明した場合は削除します。
+国ごとに定める最低年齢を満たす必要があります。当該年齢未満の方のデータが判明した場合は
+削除します。
 
-## 10. 連絡先
+## 11. 連絡先
 
-本ポリシーに関する質問、およびデータの開示・削除の請求は、本 bot が稼働している
-コミュニティサーバーで受け付けます。
+本ポリシーに関する質問とデータに関する請求は、本 bot が稼働しているコミュニティサーバーの
+モデレーターへ、英語または日本語でご連絡ください。
 
 https://discord.gg/gfl2-exilium
 
-同サーバーのモデレーターへご連絡ください。問い合わせは英語または日本語で受け付けます。
+## 12. 本ポリシーの変更
 
-## 11. 本ポリシーの変更
-
-本ポリシーは更新されることがあります。更新時は冒頭の「最終更新日」を変更します。
-重要な変更については、本 bot が稼働するコミュニティサーバーで告知します。
-変更後も本 bot の利用を継続した場合、更新後のポリシーに同意したものとみなします。
+本ポリシーを更新した場合は冒頭の「最終更新日」を変更し、重要な変更は本 bot が稼働する
+コミュニティサーバーで告知します。
 
 ## 変更履歴
 
 | 日付 | 変更内容 |
 |---|---|
 | 2026-08-18 | 初版 |
+| 2026-11-15 | ユーザーデータの利用に焦点を絞って書き直した。モデレーション機能を削除した。メンバー情報（第 4 項）を追加した。 |
