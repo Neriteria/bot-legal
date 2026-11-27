@@ -3,7 +3,7 @@
 **対象アプリケーション:** `WoWS Utility App`（Discord bot）
 **運営者:** `Neriteria`
 **発効日:** 2026-10-28
-**最終更新日:** 2026-10-28
+**最終更新日:** 2026-11-28
 
 *本規約の正文は日本語版です。下部の英語訳は参考のために提供するものであり、両者に
 相違がある場合は日本語版が優先します。*
@@ -51,7 +51,7 @@ only; in case of any discrepancy, the Japanese version prevails.)*
 
 - Discord 利用規約、Discord コミュニティガイドライン、または適用される法令に違反する目的で
   本 bot を利用すること
-- 生成した動画やビルドカード画像を用いて、試合に参加した他のプレイヤーへの嫌がらせ、
+- 生成した動画、ビルドカード画像や戦績画像を用いて、試合に参加した他のプレイヤーへの嫌がらせ、
   晒し上げ、罵倒、脅迫、名誉毀損、差別を行うこと
 - リプレイファイル以外のファイルや、意図的に改変・破損させたファイルを送信すること
 - 本 bot または本 bot が稼働する基盤に対する妨害、過負荷の付与、リバースエンジニアリング、
@@ -66,13 +66,16 @@ only; in case of any discrepancy, the Japanese version prevails.)*
 - リプレイファイルには、同じ試合に参加した他のプレイヤーの名前やゲーム内チャットが含まれ、
   生成した動画にもそれらが映ることがあります。動画はコマンドを実行したチャンネルに投稿
   されるため、利用者は投稿先のチャンネルと描画オプションを適切に選択してください。
+- 動画に付くビルドカード画像と戦績画像には、他のプレイヤーの名前、装備構成、戦績が含まれ、
+  既定ではそのチャンネルを閲覧できる誰もが表示できます。実行者本人だけに限りたい場合は、
+  `/timelapse settings` コマンドで非公開にしてください（詳細はプライバシーポリシーに定めます）。
 - 運営者は、利用者が送信したリプレイファイルおよび生成物について、本 bot の提供、ならびに
   本 bot の機能改善および不具合の調査・修正に必要な範囲でのみ保存・処理します（詳細は
   プライバシーポリシーに定めます）。それ以外の目的で利用したり、権利を主張したりすることは
   ありません。
-- 生成した動画およびビルドカード画像は、本規約、ならびに Wargaming（第 7 項参照）その他の
-  権利者の権利の範囲内で、利用者が自由に利用できます。
-- 生成した動画やビルドカード画像の描画内容が、実際の試合を正確に再現していることは
+- 生成した動画、ビルドカード画像および戦績画像は、本規約、ならびに Wargaming（第 7 項参照）
+  その他の権利者の権利の範囲内で、利用者が自由に利用できます。
+- 生成した動画、ビルドカード画像や戦績画像の内容が、実際の試合を正確に再現していることは
   保証しません。
 
 ## 6. サーバー管理者の責任
@@ -91,8 +94,8 @@ only; in case of any discrepancy, the Japanese version prevails.)*
 （以下「Wargaming」）と提携しておらず、Wargaming による承認・後援を受けたものでも
 ありません。
 
-World of Warships は Wargaming の商標です。生成した動画やビルドカード画像に含まれる
-ゲーム内の名称・画像等の権利は、Wargaming その他の権利者に帰属します。
+World of Warships は Wargaming の商標です。生成した動画、ビルドカード画像や戦績画像に
+含まれるゲーム内の名称・画像等の権利は、Wargaming その他の権利者に帰属します。
 
 ゲームのアップデートにより、リプレイファイルの形式が変わる等の理由で、本 bot の機能が
 一時的または恒久的に利用できなくなることがあります。
@@ -167,6 +170,7 @@ https://discord.gg/sWzGnFygJK
 | 日付 | 変更内容 |
 |---|---|
 | 2026-10-28 | 初版 |
+| 2026-11-28 | 戦績画像を生成物に含め、ビルドカード画像と戦績画像の公開範囲（既定で公開、`/timelapse settings` で非公開）を追記 |
 
 ---
 ---
@@ -176,7 +180,7 @@ https://discord.gg/sWzGnFygJK
 **Application:** `WoWS Utility App` (Discord bot)
 **Operator:** `Neriteria`
 **Effective date:** 2026-10-28
-**Last updated:** 2026-10-28
+**Last updated:** 2026-11-28
 
 *This English text is a translation provided for reference only. The Japanese version above
 is authoritative; in case of any discrepancy between the two, the Japanese version
@@ -219,8 +223,8 @@ You must not:
 
 - use the Bot to violate the Discord Terms of Service, the Discord Community Guidelines, or
   any applicable law;
-- use generated videos or build card images to harass, publicly shame, abuse, threaten,
-  defame, or discriminate against other players in the match;
+- use generated videos, build card images or match results images to harass, publicly
+  shame, abuse, threaten, defame, or discriminate against other players in the match;
 - submit files other than replay files, or replay files that have been deliberately altered
   or corrupted;
 - attempt to disrupt, overload, reverse-engineer, or gain unauthorised access to the Bot or
@@ -235,14 +239,18 @@ You must not:
 - A replay file contains the names and in-game chat of other players in the same match, and
   these may appear in the generated video. Because the video is posted to the channel where
   the command was run, choose the channel and the rendering options appropriately.
+- The build card images and match results image attached to a video contain other players'
+  names, loadouts and match statistics, and by default anyone who can view that channel can
+  open them. To limit them to yourself, make them private with the `/timelapse settings`
+  command (as detailed in the Privacy Policy).
 - The Operator stores and processes the replay files you submit, and the output generated
   from them, only to the extent necessary to provide the Bot and to improve it and
   investigate and fix defects (as detailed in the Privacy Policy). The Operator does not use
   them for any other purpose and claims no rights in them.
-- You may use generated videos and build card images freely, within these Terms and the
-  rights of Wargaming (see section 7) and other rights holders.
-- The Operator does not guarantee that a generated video or build card image accurately
-  reproduces the actual match.
+- You may use generated videos, build card images and match results images freely, within
+  these Terms and the rights of Wargaming (see section 7) and other rights holders.
+- The Operator does not guarantee that a generated video, build card image or match results
+  image accurately reproduces the actual match.
 
 ## 6. Responsibilities of server administrators
 
@@ -260,8 +268,8 @@ The Bot is an unofficial tool made by a fan. It is not affiliated with, endorsed
 sponsored by Wargaming Group Limited or its affiliates ("Wargaming").
 
 World of Warships is a trademark of Wargaming. Rights in the in-game names, images and other
-material contained in generated videos and build card images belong to Wargaming or other
-rights holders.
+material contained in generated videos, build card images and match results images belong to
+Wargaming or other rights holders.
 
 Game updates, such as a change to the replay file format, may make the Bot's features
 temporarily or permanently unavailable.
@@ -341,3 +349,4 @@ Enquiries are handled in Japanese.
 | Date | Change |
 |---|---|
 | 2026-10-28 | Initial version. |
+| 2026-11-28 | Included match results images among generated output, and described the visibility of build card and match results images (public by default, private via `/timelapse settings`). |

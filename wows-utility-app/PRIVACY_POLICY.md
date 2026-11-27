@@ -3,7 +3,7 @@
 **対象アプリケーション:** `WoWS Utility App`（Discord bot）
 **運営者:** `Neriteria`
 **発効日:** 2026-10-28
-**最終更新日:** 2026-10-28
+**最終更新日:** 2026-11-28
 
 *本ポリシーの正文は日本語版です。下部の英語訳は参考のために提供するものであり、両者に
 相違がある場合は日本語版が優先します。*
@@ -36,9 +36,10 @@ only; in case of any discrepancy, the Japanese version prevails.)*
 
 | データ | 目的 | 保存期間 |
 |---|---|---|
-| 利用者がコマンドに添付したリプレイファイル（`.wowsreplay`） | タイムラプス動画およびビルドカード画像の生成、本 bot の機能改善および不具合の調査・修正（下記参照） | 30 日後に自動削除 |
-| 生成したタイムラプス動画およびビルドカード画像 | 生成結果の送信、および生成後にビルドカードを表示するため | 30 日後に自動削除 |
+| 利用者がコマンドに添付したリプレイファイル（`.wowsreplay`） | タイムラプス動画、ビルドカード画像および戦績画像の生成、本 bot の機能改善および不具合の調査・修正（下記参照） | 30 日後に自動削除 |
+| 生成したタイムラプス動画、ビルドカード画像および戦績画像 | 生成結果の送信、および生成後にビルドカードと戦績画像を表示するため | 30 日後に自動削除 |
 | プリセット（Discord ユーザー ID、プリセット名、描画オプションの設定値、更新日時、既定プリセットの設定） | 利用者が保存した描画設定の再利用 | 利用者が削除するまで |
+| 公開設定（Discord ユーザー ID、ビルドカードと戦績画像を他の人にも見せるかどうか） | 利用者が選んだ公開範囲を、以後に生成する動画へ適用するため | 利用者が既定（公開）に戻すまで |
 | 運用ログ（下記参照） | 障害の調査、不正利用への対処、問い合わせへの対応 | 30 日後に自動削除 |
 
 運用ログには、コマンドが実行されるたびに以下の項目が記録されます。
@@ -48,7 +49,8 @@ only; in case of any discrepancy, the Japanese version prevails.)*
 - 実行場所のサーバー ID・サーバー名・チャンネル ID
 - 処理ごとに割り当てる識別番号（ジョブ ID）、処理結果、エラー情報
 
-プリセットは、利用者が自らプリセットを保存した場合にのみ作成されます。
+プリセットは、利用者が自らプリセットを保存した場合にのみ作成されます。公開設定は、利用者が
+`/timelapse settings` コマンドで非公開を選んだ場合にのみ保存されます。
 
 ### リプレイファイルの機能改善・不具合修正への利用
 
@@ -63,9 +65,10 @@ only; in case of any discrepancy, the Japanese version prevails.)*
 ## 3. リプレイファイルに含まれる他のプレイヤーの情報
 
 World of Warships のリプレイファイルには、録画した本人だけでなく、同じ試合に参加した
-すべてのプレイヤーのゲーム内の名前、艦艇、装備構成、ゲーム内チャットが記録されています。
-これらの情報は、第 2 項に記載した目的（動画とビルドカード画像の生成、機能改善および不具合の
-調査・修正）にのみ使用し、それ以外の目的では利用・集計しません。
+すべてのプレイヤーのゲーム内の名前、艦艇、装備構成、ゲーム内チャット、および試合の戦績
+（与ダメージ・撃沈数など）が記録されています。これらの情報は、第 2 項に記載した目的（動画、
+ビルドカード画像および戦績画像の生成、機能改善および不具合の調査・修正）にのみ使用し、
+それ以外の目的では利用・集計しません。
 
 生成されるものには、以下のとおり他のプレイヤーの情報が含まれることがあります。
 
@@ -73,8 +76,15 @@ World of Warships のリプレイファイルには、録画した本人だけ�
   映ります。動画は**コマンドを実行したチャンネルへ投稿**され、そのチャンネルを閲覧できる
   すべての人が見ることができます。プレイヤー名やチャットを映すかどうかは、実行者が描画
   オプションで選択できます。
-- **ビルドカード画像:** プレイヤー名と装備構成が含まれます。動画を生成した実行者が選択した
-  場合に限り、実行者本人にのみ見えるメッセージとして表示されます。
+- **ビルドカード画像:** プレイヤー名と装備構成が含まれます。
+- **戦績画像:** 試合に参加したプレイヤー（Bot を除く）の名前、艦艇、試合の戦績、勝敗が
+  含まれます。
+
+ビルドカード画像と戦績画像は、動画に付いている選択メニューまたはボタンを押した人にだけ
+見えるメッセージとして表示されます。既定では、動画が投稿されたチャンネルを閲覧できる
+誰もが押すことができます。動画を生成した実行者が `/timelapse settings` コマンドで非公開を
+選んだ場合は、その後に生成した動画では実行者本人だけが押すことができます。設定を変更しても、
+すでに生成した動画の公開範囲は変わりません。
 
 ## 4. メッセージ本文
 
@@ -95,7 +105,7 @@ World of Warships のリプレイファイルには、録画した本人だけ�
 ## 6. データの保存場所
 
 データは、Amazon Web Services（AWS）の `ap-northeast-1`（東京）リージョンにある、
-運営者が管理するアカウントに保管・処理されます。プリセットは Amazon DynamoDB に、
+運営者が管理するアカウントに保管・処理されます。プリセットと公開設定は Amazon DynamoDB に、
 リプレイファイルと生成物は Amazon S3 に、運用ログは Amazon CloudWatch Logs に
 保存されます。動画の生成は AWS Lambda 上で行います。アクセスできるのは運営者のみです。
 
@@ -114,12 +124,14 @@ World of Warships のリプレイファイルには、録画した本人だけ�
 ## 8. 保存期間・削除・利用者の権利
 
 - **リプレイファイルと生成物**は、保存から 30 日後に自動的に削除されます。削除後は、
-  過去の動画に付いているビルドカードの選択メニューも利用できなくなります。
+  過去の動画に付いているビルドカードの選択メニューと戦績画像のボタンも利用できなくなります。
 - 機能改善・不具合修正のために運営者が**複製したリプレイファイル**は、目的を達成した時点で
   削除します（第 2 項参照）。
 - **プリセット**は、利用者が `/timelapse preset delete` コマンドでいつでも削除できます。
   プリセットはサーバーではなく利用者に紐づくため、本 bot がサーバーから退出しても
   削除されません。
+- **公開設定**は、利用者が `/timelapse settings` コマンドで既定（公開）に戻すと削除されます。
+  プリセットと同じく利用者に紐づくため、本 bot がサーバーから退出しても削除されません。
 - **運用ログ**は、記録から 30 日後に自動的に削除されます。
 - チャンネルに投稿された動画は Discord 上のメッセージであり、運営者の保存領域ではなく
   Discord に保存されています。削除は、当該サーバーの管理者が Discord 上で行ってください。
@@ -143,6 +155,10 @@ World of Warships のリプレイファイルには、録画した本人だけ�
 選択できます。
 
 **プリセット:** プリセットの保存は任意です。保存しなくても動画の生成は利用できます。
+
+**ビルドカードと戦績画像の公開範囲:** 既定では、動画を閲覧できる誰もがビルドカードと戦績画像を
+表示できます。`/timelapse settings` コマンドで非公開にすると、その後に生成した動画では
+実行者本人だけが表示できます。
 
 **サーバー全体:** サーバー管理者は、Discord のサーバー設定（連携サービス）で本 bot の
 コマンドを使えるメンバーやチャンネルを制限できます。また、本 bot を退出させることで、
@@ -174,6 +190,7 @@ https://discord.gg/sWzGnFygJK
 | 日付 | 変更内容 |
 |---|---|
 | 2026-10-28 | 初版 |
+| 2026-11-28 | 戦績画像の生成・表示を追加。ビルドカードと戦績画像を既定で他の閲覧者も表示できるようにし、非公開にする公開設定（保存データ）を追加 |
 
 ---
 ---
@@ -183,7 +200,7 @@ https://discord.gg/sWzGnFygJK
 **Application:** `WoWS Utility App` (Discord bot)
 **Operator:** `Neriteria`
 **Effective date:** 2026-10-28
-**Last updated:** 2026-10-28
+**Last updated:** 2026-11-28
 
 *This English text is a translation provided for reference only. The Japanese version above
 is authoritative; in case of any discrepancy between the two, the Japanese version
@@ -212,9 +229,10 @@ The Bot collects data only when a user runs one of its commands. The data it col
 
 | Data | Purpose | Retention |
 |---|---|---|
-| Replay files (`.wowsreplay`) attached to a command by the user | Generating time-lapse videos and build card images; improving the Bot and investigating and fixing defects (see below) | Deleted automatically after 30 days |
-| Generated time-lapse videos and build card images | Delivering the result, and showing build cards after generation | Deleted automatically after 30 days |
+| Replay files (`.wowsreplay`) attached to a command by the user | Generating time-lapse videos, build card images and match results images; improving the Bot and investigating and fixing defects (see below) | Deleted automatically after 30 days |
+| Generated time-lapse videos, build card images and match results images | Delivering the result, and showing build cards and match results after generation | Deleted automatically after 30 days |
 | Presets (Discord user ID, preset name, rendering option values, last-updated time, default-preset setting) | Letting users reuse rendering settings they saved | Until the user deletes them |
+| Sharing setting (Discord user ID, and whether others may view build cards and match results images) | Applying the visibility the user chose to videos generated afterwards | Until the user switches it back to the default (public) |
 | Operational logs (see below) | Investigating failures, dealing with abuse, and answering enquiries | Deleted automatically after 30 days |
 
 Each time a command is run, the operational logs record:
@@ -224,7 +242,8 @@ Each time a command is run, the operational logs record:
 - the server ID, server name and channel ID where it was run;
 - an identifier assigned to each job, the result, and any error information.
 
-Presets are created only when a user chooses to save one.
+Presets are created only when a user chooses to save one. The sharing setting is stored only
+when a user chooses private with the `/timelapse settings` command.
 
 ### Use of replay files to improve the Bot and fix defects
 
@@ -240,10 +259,11 @@ shared with third parties.
 ## 3. Information about other players contained in replay files
 
 A World of Warships replay file records not only the player who recorded it, but also the
-in-game names, ships, loadouts and in-game chat of every player in that match. This
-information is used only for the purposes described in section 2 (generating videos and
-build card images, and improving the Bot and investigating and fixing defects), and is not
-used or aggregated for any other purpose.
+in-game names, ships, loadouts, in-game chat and match statistics (such as damage dealt and
+ships destroyed) of every player in that match. This information is used only for the
+purposes described in section 2 (generating videos, build card images and match results
+images, and improving the Bot and investigating and fixing defects), and is not used or
+aggregated for any other purpose.
 
 The generated output may contain information about other players, as follows:
 
@@ -251,8 +271,16 @@ The generated output may contain information about other players, as follows:
   may appear in the video. The video is **posted to the channel where the command was run**
   and can be seen by everyone who can view that channel. The user who runs the command
   chooses, through the rendering options, whether player names and chat are shown.
-- **Build card images:** these contain player names and loadouts. They are shown only when
-  the user who generated the video selects one, as a message visible only to that user.
+- **Build card images:** these contain player names and loadouts.
+- **Match results images:** these contain the names, ships, match statistics and the result
+  (win or loss) of the players in the match (excluding bots).
+
+Build card images and match results images are shown, as a message visible only to the
+person who opened them, when someone uses the menu or button attached to the video. By
+default, anyone who can view the channel where the video was posted can open them. If the
+user who generated the video chooses private with the `/timelapse settings` command, only
+that user can open them for videos generated afterwards. Changing the setting does not
+change the visibility of videos that have already been generated.
 
 ## 4. Message content
 
@@ -273,8 +301,8 @@ The Bot does not collect or store:
 ## 6. Where data is stored
 
 Data is stored and processed in Amazon Web Services (AWS), in the `ap-northeast-1` (Tokyo,
-Japan) region, in an account controlled by the Operator. Presets are stored in Amazon
-DynamoDB, replay files and generated output in Amazon S3, and operational logs in Amazon
+Japan) region, in an account controlled by the Operator. Presets and the sharing setting are
+stored in Amazon DynamoDB, replay files and generated output in Amazon S3, and operational logs in Amazon
 CloudWatch Logs. Videos are generated on AWS Lambda. Access is restricted to the Operator.
 
 The Bot is operated from Japan. Japan has been recognised by the European Commission as
@@ -294,12 +322,16 @@ investigate abuse of the Bot itself.
 ## 8. Retention, deletion and your rights
 
 - **Replay files and generated output** are deleted automatically 30 days after they are
-  stored. After that, the build card menu attached to an older video stops working.
+  stored. After that, the build card menu and the match results button attached to an older
+  video stop working.
 - **Copies of replay files** made by the Operator to improve the Bot or fix defects are
   deleted once the purpose has been achieved (see section 2).
 - **Presets** can be deleted by the user at any time with the `/timelapse preset delete`
   command. Presets belong to the user rather than to a server, so they are not deleted when
   the Bot leaves a server.
+- **The sharing setting** is deleted when the user switches it back to the default (public)
+  with the `/timelapse settings` command. Like presets, it belongs to the user, so it is not
+  deleted when the Bot leaves a server.
 - **Operational logs** are deleted automatically 30 days after they are recorded.
 - A video posted to a channel is a Discord message, stored by Discord rather than in the
   Operator's storage. Deleting it is done through Discord by the server's administrators.
@@ -323,6 +355,10 @@ about a user is collected unless that user runs a command.
 the rendering options.
 
 **Presets.** Saving a preset is optional. Videos can be generated without one.
+
+**Visibility of build cards and match results.** By default, anyone who can view a video can
+open its build cards and match results image. With the `/timelapse settings` command you can
+make them private, so that only you can open them for videos generated afterwards.
 
 **Whole server.** A server administrator can restrict which members and channels can use
 the Bot's commands in Discord's server settings (Integrations), and can end the Bot's use in
@@ -355,3 +391,4 @@ Continued use of the Bot after a change constitutes acceptance of the updated po
 | Date | Change |
 |---|---|
 | 2026-10-28 | Initial version. |
+| 2026-11-28 | Added generating and showing match results images. Build cards and match results images can now be opened by other viewers by default, with a sharing setting (stored data) to make them private. |
