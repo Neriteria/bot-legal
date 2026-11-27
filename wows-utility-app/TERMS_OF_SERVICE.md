@@ -138,8 +138,8 @@ Wargaming その他の権利者に帰属します。
 
 本 bot は Discord Inc. と提携しておらず、同社による承認・後援を受けたものでもありません。
 
-本 bot は Amazon Web Services が提供する基盤上で稼働しています。Discord または当該基盤に
-起因する障害・事故について、運営者は責任を負いません。
+本 bot は外部のクラウドサービス上で稼働しています。Discord または当該サービスに起因する
+障害・事故について、運営者は責任を負いません。
 
 ## 13. 準拠法および管轄
 
@@ -313,8 +313,8 @@ including liability for wilful misconduct or gross negligence.
 
 The Bot is not affiliated with, endorsed by, or sponsored by Discord Inc.
 
-The Bot runs on infrastructure provided by Amazon Web Services. The Operator is not
-responsible for outages or incidents originating from Discord or from that infrastructure.
+The Bot runs on an external cloud service. The Operator is not responsible for outages or
+incidents originating from Discord or from that service.
 
 ## 13. Governing law
 

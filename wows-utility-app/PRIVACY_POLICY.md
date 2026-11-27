@@ -85,8 +85,8 @@ only; in case of any discrepancy, the Japanese version prevails.)*
 
 ## 6. データの保存場所
 
-データは、Amazon Web Services（AWS）の `ap-northeast-1`（東京）リージョンにある、
-運営者が管理するアカウントで保管・処理されます。アクセスできるのは運営者のみです。
+データは、運営者が管理する日本国内のクラウド環境で保管・処理されます。保管・処理には
+外部のクラウドサービスを利用しますが、データにアクセスできるのは運営者のみです。
 
 本 bot は日本から運営されています。日本は欧州委員会により十分な個人データ保護の水準を
 確保していると認定されています。このため、欧州経済領域または英国に所在する利用者の
@@ -251,9 +251,9 @@ The Bot does not collect or store:
 
 ## 6. Where data is stored
 
-Data is stored and processed in Amazon Web Services (AWS), in the `ap-northeast-1` (Tokyo,
-Japan) region, in an account controlled by the Operator. Access is restricted to the
-Operator.
+Data is stored and processed in a cloud environment in Japan controlled by the Operator.
+An external cloud service is used for storage and processing, but access to the data is
+restricted to the Operator.
 
 The Bot is operated from Japan. Japan has been recognised by the European Commission as
 providing an adequate level of data protection, so storing the data of users in the
